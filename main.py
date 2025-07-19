@@ -72,6 +72,8 @@ if __name__ == "__main__" :
     else :
         model = joblib.load("model.pkl")
         pipeline = joblib.load("pipeline.pkl")
-        
+
+        print(f"{num_attribs} | {cat_attribs}")
+
         print(model.score(pipeline.transform(X_test), y_test))
     
