@@ -3,74 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Prediction Result</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background: linear-gradient(to right, #74ebd5, #acb6e5);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container {
-            background-color: white;
-            padding: 40px 50px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            max-width: 400px;
-            width: 90%;
-        }
-
-        h1 {
-            color: #333;
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-
-        .value-box {
-            font-size: 32px;
-            color: #2d6cdf;
-            font-weight: bold;
-            padding: 20px;
-            border: 2px solid #2d6cdf;
-            border-radius: 10px;
-            background-color: #f4f9ff;
-            display: inline-block;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-top: 30px;
-            text-decoration: none;
-            color: #2d6cdf;
-            border: 1px solid #2d6cdf;
-            padding: 8px 16px;
-            border-radius: 8px;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        .back-link:hover {
-            background-color: #2d6cdf;
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='./result.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Predicted Median House Value</h1>
-        <div class="value-box">
-            ${{ median_house_value }}
+        <div class="floating-elements"></div>
+        
+        <div class="success-icon">🎉</div>
+        
+        <h1>Prediction Complete!</h1>
+        
+        <div class="value-container">
+            <div class="value-label">Estimated House Value</div>
+            <div class="value-box">
+                <span class="currency">$</span>{{ median_house_value }}
+            </div>
         </div>
-        <br>
-        <a href="{{ url_for('index') }}" class="back-link">← Go Back</a>
+        
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-value">📈</div>
+                <div class="stat-label">Analyzed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">🎯</div>
+                <div class="stat-label">Predicted</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">✨</div>
+                <div class="stat-label">Results</div>
+            </div>
+        </div>
+        
+        <a href="{{ url_for('index') }}" class="back-link">
+            🏠 Try Another Prediction
+        </a>
     </div>
 </body>
 </html>
